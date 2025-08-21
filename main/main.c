@@ -14,8 +14,18 @@ void Demo_Task(void *arg) // Function to be executed by the task
         vTaskDelay(1000/ portTICK_PERIOD_MS);
         if (count == 5)
         {
+          vTaskSuspend(myTaskHandle2);
+          printf("Demo_Task2 is suspended!\n");
+        }
+        if (count == 8)
+        {
+          vTaskResume(myTaskHandle2);
+          printf("Demo_Task2 is resumed!\n");
+        }
+        if (count == 12)
+        {
           vTaskDelete(myTaskHandle2);
-          printf("Demo_Task2 is deleted!\n");
+          printf("Demo_Task is deleted!\n");
         }
     }
 }
